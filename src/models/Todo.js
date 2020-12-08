@@ -6,7 +6,7 @@ const requiredString = {
     required: true,
 }
 
-const requiredDefaultData = { 
+const defaultRequiredDate = { 
     type: Date, 
     default: Date.now,
 }
@@ -15,6 +15,6 @@ const todoSchema = new Schema({
   title:  requiredString,
   author: requiredString,
   description:   String,
-  created_at: requiredDefaultData,
-  updated_at:requiredDefaultData,
+  created_at: defaultRequiredDate,
+  updated_at:defaultRequiredDate,
 });
