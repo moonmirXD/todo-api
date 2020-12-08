@@ -11,7 +11,7 @@ const todoSchema = new Schema({
   author: requiredString,
   description: String,
   isDone: {
-      type: String,
+      type: Boolean,
       default: false,
   }
 },{
