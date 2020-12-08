@@ -4,10 +4,14 @@ const Todo = require('../models/Todo');
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    res.json({
-        message: "🌎"
-    })
+router.get('/', async (req, res, next) => {
+    try {
+        const todos = await Todo.find();
+        res.json(todos);
+    } catch (error) {
+        next(error);
+    }
+    
 })
 
 router.post('/', async (req, res, next) => {
@@ -16,6 +20,9 @@ router.post('/', async (req, res, next) => {
         const createdTodo = await todo.save();
         res.json(createdTodo);
     } catch (error) {
+        if(error.name === 'ValidationError') {
+            res.status(422);
+        }
         next(error);
     }
 })
