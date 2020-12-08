@@ -6,15 +6,19 @@ const requiredString = {
     required: true,
 }
 
-const defaultRequiredDate = { 
-    type: Date, 
-    default: Date.now,
-}
-
 const todoSchema = new Schema({
   title:  requiredString,
   author: requiredString,
-  description:   String,
-  created_at: defaultRequiredDate,
-  updated_at:defaultRequiredDate,
+  description: String,
+  isDone: {
+      type: String,
+      default: false,
+  }
+},{
+    timestamps: true,
 });
+
+
+const todo = mongoose.model('todo', todoSchema);
+
+module.exports = todo
