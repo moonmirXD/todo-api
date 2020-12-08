@@ -23,6 +23,7 @@ app.use(helmet());
 app.use(cors({
     origin: process.env.CORS_ORIGIN,
 }));
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.json({
@@ -34,6 +35,7 @@ app.use('/api/todos', todos);
 
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler);
+
 
 
 const port = process.env.PORT || 1337;
